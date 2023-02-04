@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FMX Semitone Calculator</title>
+</head>
+<body>
+    <h1>Convert semitone offset to ratio value</h1>
+    <p>For an offset of <span id="input"></span> semitones, set the ratio near to value: <span id="answer"></span></p>
+
+    <script>
+        const inputEl = document.getElementById('input');
+        const answerEl = document.getElementById('answer');
+
+        function setEls(semis, ratio) {
+            inputEl.innerHTML = semis;
+            answerEl.innerHTML = ratio;
+        }
+
+        let semis = 0;
+        semis = Number(window.prompt('Please input the offset from base pitch in semitones'));
+
+        if (isNaN(semis)) {
+            alert('Not a Number, please refresh and try again');
+        } else {
+            setEls(semis, 1000 * Math.pow( 2, ( semis / 12 ) ));
+        }
+    </script>
+</body>
+</html>
